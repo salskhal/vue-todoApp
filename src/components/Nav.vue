@@ -1,0 +1,47 @@
+<template>
+  <nav>
+    <router-link to="/">All</router-link> 
+    <router-link to="/active">Active</router-link>
+    <router-link to="/completed">Completed</router-link>
+  </nav>
+</template>
+
+
+<style scoped>
+
+/* nav {
+  padding: 30px;
+}
+
+nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+nav a.router-link-exact-active {
+  color: #42b983;
+} */
+
+a{
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+}
+nav {
+  display: flex;
+  list-style: none;
+  width: 100%;
+  margin-inline: auto;
+  justify-content: space-between;
+  margin-top: 40px;
+  border-bottom: 1px solid #bdbdbd;
+  padding: 0 40px;
+}
+
+nav a.router-link-exact-active {
+   border-bottom: 4px solid #2f80ed;
+}
+
+
+
+</style>

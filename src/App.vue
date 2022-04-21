@@ -1,30 +1,37 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <Header />
+  <div class="container">
+    <Nav />
+    <router-view />
+  </div>
 </template>
 
+<script setup>
+import Header from "./components/Header.vue";
+import Nav from "./components/Nav.vue";
+
+
+import {provide} from "vue"
+import store from "@/store"
+
+provide("store", store)
+
+</script>
+
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-nav {
-  padding: 30px;
+body {
+  font-family: "Montserrat", sans-serif;
 }
 
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
+.container {
+  width: 40%;
+  margin-inline: auto;
 }
 </style>

@@ -1,19 +1,18 @@
 <template>
-  <form @submit.prevent="">
-    <input type="text" placeholder="add details" v-model="inputValue"/>
+  <form @submit.prevent="store.methods.addNewTodo">
+    <input type="text" placeholder="add details" v-model="store.state.newTodo"/>
     <button>ADD</button>
   </form>
 </template>
 
-// @submit.prevent="$emit('toAddTodo', inputValue)"
+
 
 
 
 <script setup>
-import {ref} from "vue"
+import {ref, inject} from "vue"
 
-const inputValue = ref("")
-
+const store = inject("store");
 
 </script>
 
@@ -21,7 +20,7 @@ const inputValue = ref("")
 form {
   width: 100%;
   display: flex;
-  margin-top: 20px;
+  /* margin-top: 20px; */
 }
 
 input {

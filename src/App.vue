@@ -34,4 +34,20 @@ body {
   width: 40%;
   margin-inline: auto;
 }
+
+@media screen and (max-width: 500px) {
+  .container{
+    width: 90%;
+  }
+}
+@media screen and (max-width: 300px) {
+  .container{
+    width: 100%;
+  }
+}
+@media screen and (max-width: 700px) {
+  .container{
+    width: 70%;
+  }
+}
 </style>

@@ -11,10 +11,13 @@ import Header from "./components/Header.vue";
 import Nav from "./components/Nav.vue";
 
 
-import {provide} from "vue"
+import {onMounted, provide} from "vue"
 import store from "@/store"
 
 provide("store", store)
+
+
+  
 
 </script>
 

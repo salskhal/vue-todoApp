@@ -1,23 +1,20 @@
 <template>
   <div class="home">
     <Input />
-    <TodoList v-bind:todos="activeTodo"/>
+    <TodoList v-bind:todos="active"/>
   </div>
 </template>
 
 <script setup>
-import { ref, inject, computed } from "vue";
+
 import Input from "../components/Input.vue";
 import TodoList from "../components/TodoList.vue"
 
-const store = inject("store");
+import { useTodoStore } from "../store/todo.js";
+import { storeToRefs } from "pinia";
 
-const todos = ref(store.state.counter);
+const MyTodo = useTodoStore();
 
-const activeTodo = computed(() => {
-  let selected = todos.value.filter((todo) => {
-    return todo.checked === false;
-  });
-  return selected;
-});
+const { active } = storeToRefs(MyTodo)
+
 </script>

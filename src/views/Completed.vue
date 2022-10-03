@@ -1,32 +1,27 @@
 <template>
   <ul>
-    <li v-for="(todo, index) in completedTodo" :key="todo.id">
+    <li v-for="(todo, index) in completed" :key="todo.id">
       <div>
         <input type="checkbox" v-model="todo.checked" />
         <span :class="todo.checked ? 'check' : ''">{{ todo.todoName }}</span>
       </div>
 
-      <button class="delete" @click="store.methods.deleteTodo(index)">
-        <img src="../assets/bin.svg" alt="">
+      <button class="delete" @click="store.deleteTodo(index)">
+        <img src="../assets/bin.svg" alt="" />
       </button>
     </li>
   </ul>
 </template>
 
 <script setup>
-import { inject, computed, ref } from "vue";
+import { useTodoStore } from "../store/todo.js";
+import { storeToRefs } from "pinia";
+const store = useTodoStore();
 
-const store = inject("store");
-
-const todos = ref(store.state.counter);
-
-const completedTodo = computed(() => {
-  let selected = todos.value.filter((todo) => {
-    return todo.checked === true;
-  });
-  return selected;
-});
-
+const removeTodo = () =>{
+  store.deleteTodo()
+}
+const { completed } = storeToRefs(store);
 </script>
 
 <style scoped>
@@ -49,10 +44,10 @@ span {
   margin-left: 10px;
 }
 
-.delete{
-    background: red;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+.delete {
+  background: red;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
-  <form @submit.prevent="store.methods.addNewTodo">
-    <input type="text" placeholder="add details" v-model="store.state.newTodo"/>
+  <form @submit.prevent="myTodo.addTodo">
+    <input type="text" placeholder="add details" v-model="newTodo"/>
     <button>ADD</button>
   </form>
 </template>
@@ -10,9 +10,22 @@
 
 
 <script setup>
-import {ref, inject} from "vue"
+// import {ref, inject} from "vue"
 
-const store = inject("store");
+// const store = inject("store");
+
+
+
+
+import { useTodoStore } from "../store/todo.js";
+import { storeToRefs } from "pinia";
+
+const myTodo = useTodoStore();
+
+
+
+
+const { newTodo } = storeToRefs(myTodo);
 
 </script>
 
